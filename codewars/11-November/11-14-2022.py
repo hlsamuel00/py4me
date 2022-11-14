@@ -20,3 +20,20 @@ def multiply(a, b):
 
 #==============================================================================================================
 
+# Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers.
+
+def even_or_odd(number):
+    if number % 2:
+        return 'Odd'
+    else :
+        return 'Even'
+
+# OR
+
+def even_or_odd(number): 
+    return "Even" if not(number % 2) else "Odd"
+
+# OR
+
+def even_or_odd(number):
+    return 'Odd' if number & 1 else 'Even'
