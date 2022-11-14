@@ -70,3 +70,15 @@ def opposite(number):
 
 def number_to_string(num):
     return str(num)
+
+#==============================================================================================================
+
+# DESCRIPTION:
+# Complete the method that takes a boolean value and return a "Yes" string for true, or a "No" string for false.
+
+def bool_to_word(boolean):
+    return 'Yes' if boolean else 'No'
+
+# OR
+
+bool_to_word = { True: 'Yes', False: 'No' }.get
