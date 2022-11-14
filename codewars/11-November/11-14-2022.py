@@ -37,3 +37,22 @@ def even_or_odd(number):
 
 def even_or_odd(number):
     return 'Odd' if number & 1 else 'Even'
+
+#==============================================================================================================
+
+# DESCRIPTION:
+# Very simple, given an integer or a floating-point number, find its opposite.
+
+# Examples:
+
+# 1: -1
+# 14: -14
+# -34: 34
+
+def opposite(number):
+    try:
+        return -number
+    except:
+        print('Please enter valid numerical value.')
+        quit()
+
