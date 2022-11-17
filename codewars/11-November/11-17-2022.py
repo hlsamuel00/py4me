@@ -50,6 +50,7 @@ def no_space(string):
     return string.replace(' ','')
 
 #==============================================================================================================
+
 # DESCRIPTION:
 # Summation
 # Write a program that finds the summation of every number from 1 to num. The number will always be a positive integer greater than 0.
@@ -70,5 +71,24 @@ def summation(num):
 def summation(num):
     return sum( range(1,num+1) )
 
+#==============================================================================================================
 
+# DESCRIPTION:
+# Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present).
 
+# For example,
+
+# [True,  True,  True,  False,
+#   True,  True,  True,  True ,
+#   True,  False, True,  False,
+#   True,  False, False, True ,
+#   True,  True,  True,  True ,
+#   False, False, True,  True]
+# The correct answer would be 17.
+
+# Hint: Don't forget to check for bad values like null/undefined
+
+def count_sheeps(sheep):
+    return sheep.count(True)
+
+#==============================================================================================================
