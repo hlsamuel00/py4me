@@ -62,4 +62,4 @@ for line in file_handle:
 if not_found > 0:
     print('Number of features for which the location could not be found:', not_found)
     
-print("Run geodump.py to read the data from the database so you can vizualize it on a map.")
+print("Run geodata_dump.py to read the data from the database so you can visualize it on a map.")
