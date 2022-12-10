@@ -21,4 +21,22 @@ def string_to_array(s):
 # count_by(2,5) #should return [2,4,6,8,10]
 
 def count_by(x, n):
-    return [ num * x for num in range(1,n+1) ]
+    return [ idx * x for idx in range(1,n+1) ]
+
+#==============================================================================================================
+
+# DESCRIPTION:
+# If you can't sleep, just count sheep!!
+
+# Task:
+# Given a non-negative integer, 3 for example, return a string with a murmur: "1 sheep...2 sheep...3 sheep...". Input will always be valid, i.e. no negative integers.
+
+def count_sheep(n):
+    string = ''
+    for idx in range(n):
+        string += f'{idx+1} sheep...'
+    return string
+# OR
+
+def count_sheep(number_of_sheep):
+    return ''.join(f'{idx + 1} sheep...' for idx in range(number_of_sheep))
