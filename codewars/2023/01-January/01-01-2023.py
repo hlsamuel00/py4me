@@ -6,3 +6,18 @@
 
 def solution(number):
     return sum( num for num in range(number) if not num % 3 or not num % 5)
+
+
+#==============================================================================================================
+
+# Return the number (count) of vowels in the given string.
+
+# We will consider a, e, i, o, u as vowels for this Kata (but not y).
+
+# The input string will only consist of lower case letters and/or spaces.
+
+import re
+def get_count(sentence):
+    return len(re.findall('[aeiouAEIOU]', sentence))
+
+#==============================================================================================================
