@@ -6,6 +6,8 @@ class Game:
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
+        pygame.display.set_caption('The Hidden World') #set name in game window
+        # pygame.display.set_icon() #set icon in game window
         self.clock = pygame.time.Clock()
 
     def run(self):
