@@ -1,3 +1,5 @@
 ex-13/lesson1.py
 reInvent2022/
 *.sqlite
+*__pycache__
+projects/my-game/graphics
