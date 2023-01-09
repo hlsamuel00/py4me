@@ -3,3 +3,5 @@ reInvent2022/
 *.sqlite
 *__pycache__
 projects/my-game/graphics
+projects/my-game/levels
+projects/my-game/map
