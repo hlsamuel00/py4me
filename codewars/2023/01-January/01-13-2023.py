@@ -16,7 +16,7 @@
     # s[i] is a printable ascii character.
 
 class Solution:
-    def reverseString(self, s: List[str]) -> None:
+    def reverseString(self, s: list[str]) -> None:
        s[:] = s[::-1]
 
 # OR
