@@ -36,3 +36,36 @@ class Solution:
         return max_count
 
 #==============================================================================================================
+
+# Given two strings s1 and s2, return true if s2 contains a permutation of s1, or false otherwise.
+
+# In other words, return true if one of s1's permutations is the substring of s2.
+
+# Example 1:
+#     Input: s1 = "ab", s2 = "eidbaooo"
+#     Output: true
+#     Explanation: s2 contains one permutation of s1 ("ba").
+
+# Example 2:
+#     Input: s1 = "ab", s2 = "eidboaoo"
+#     Output: false
+ 
+
+# Constraints:
+#     1 <= s1.length, s2.length <= 104
+#     s1 and s2 consist of lowercase English letters.
+
+
+from collections import Counter
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        window = len(s1) # setting the window to the length of the test string
+        s1_counter = Counter(s1) # create a count of all letters in the test string
+        
+        print(len(s2) - window + 1, len(s2))
+        for i in range(len(s2) - window + 1): # creating boundaries so check remains within length of string
+            s2_counter = Counter(s2[i : i + window]) # creating a new count of all of the letters in the string
+            if s2_counter == s1_counter: # conditional testing count of letters in string with count in test string
+                return True # return true if they match
+            
+        return False # if loop wasn't broken, no permutation exists
