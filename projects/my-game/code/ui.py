@@ -76,14 +76,14 @@ class UI:
         return bg_rect
 
     def weapon_overlay(self, weapon_index, has_switched):
-        bg_rect = self.selection_box(10, 486, 'weapon', has_switched)
+        bg_rect = self.selection_box(10, self.display_surface.get_size()[1] - 100, 'weapon', has_switched)
         weapon_surface = self.weapon_graphics[weapon_index]
         weapon_rect = weapon_surface.get_rect(center = bg_rect.center)
 
         self.display_surface.blit(weapon_surface, weapon_rect)
 
     def magic_overlay(self, magic_index, has_switched):
-        bg_rect = self.selection_box(100, 486, 'magic', has_switched)
+        bg_rect = self.selection_box(100, self.display_surface.get_size()[1] - 100 , 'magic', has_switched)
         magic_surface = self.magic_graphics[magic_index]
         magic_rect = magic_surface.get_rect(center = bg_rect.center)
 
