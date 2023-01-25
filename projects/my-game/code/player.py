@@ -39,11 +39,12 @@ class Player(Entity):
         self.magic_switch_time = None
 
         # Player Stats
-        self.stats = { 'health': 100, 'energy': 60, 'attack': 10, 'magic': 4, 'speed': 5 }
+        self.stats = { 'health': 100, 'energy': 60, 'attack': 10, 'magic': 4, 'speed': 5, 'level': 1 }
         self.health = self.stats['health']
         self.energy = self.stats['energy']
         self.exp = 0
         self.speed = self.stats['speed']
+        self.level = self.stats['level']
 
     def import_player_assets(self):
         character_path = './graphics/player/'
@@ -156,9 +157,17 @@ class Player(Entity):
         self.image = animation[int(self.frame_index)]
         self.rect = self.image.get_rect(center = self.hitbox.center)
 
+    def levelup(self):
+        exp_needed = nextLevel(self.level) 
+
+        if self.exp >= exp_needed:
+            self.exp %= exp_needed
+            self.level += 1
+
     def update(self):
         self.input()
         self.cooldowns()
         self.get_status()
         self.animate()
+        # self.levelup()
         self.move(self.speed)

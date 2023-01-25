@@ -10,6 +10,7 @@ class UI:
         # Bar setup
         self.health_bar_rect = pygame.Rect(10, 10, HEALTH_BAR_WIDTH, BAR_HEIGHT)
         self.energy_bar_rect = pygame.Rect(10, 42, ENERGY_BAR_WIDTH, BAR_HEIGHT)
+        self.exp_bar_rect = pygame.Rect(10, 74, ENERGY_BAR_WIDTH, BAR_HEIGHT)
 
         # Weapon display setup
         self.weapon_graphics = []
@@ -93,9 +94,9 @@ class UI:
     def display(self, player):
         self.show_bar(player.health, player.stats['health'], self.health_bar_rect, HEALTH_COLOR, 'Health')
         self.show_bar(player.energy, player.stats['energy'], self.energy_bar_rect, ENERGY_COLOR, 'Energy')
-        # self.show_bar(player.exp, player.stats['exp_next'], self.exp_bar_rect, EXP_COLOR, 'Exp')
+        self.show_bar(player.exp, nextLevel(player.level), self.exp_bar_rect, EXP_COLOR, 'Exp')
 
-        self.show_exp(player.exp)
+        self.show_exp(player.level)
 
         self.weapon_overlay(player.weapon_index, not player.can_switch_weapon)
         self.magic_overlay(player.magic_index, not player.can_switch_magic)
