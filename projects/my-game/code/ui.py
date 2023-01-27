@@ -33,7 +33,7 @@ class UI:
         # converting stat to pixels
         ratio = current_amount / max_amount
         current_width = bg_rect.width * ratio
-        current_rect = pygame.Rect(bg_rect.left, bg_rect.top, current_width, bg_rect.height)
+        current_rect = pygame.Rect(bg_rect.left, bg_rect.top, current_width, bg_rect.height, border_radius = 6)
 
         # get bar text
         font_surface = pygame.font.Font(UI_FONT, 11).render(text, True, TEXT_COLOR)
@@ -47,7 +47,7 @@ class UI:
         pygame.draw.rect(self.display_surface, UI_BORDER_COLOR, font_rect.inflate(7.5, 0), border_radius = 4)
         self.display_surface.blit(font_surface, font_surface.get_rect(center = font_rect.center))
 
-    def show_exp(self, exp):
+    def show_player_level(self, exp):
         text_surface = self.font.render(str(int(exp)), False, TEXT_COLOR)
         x = self.display_surface.get_size()[0] - 20
         y = self.display_surface.get_size()[1] - 20
@@ -90,13 +90,12 @@ class UI:
 
         self.display_surface.blit(magic_surface, magic_rect)
 
-
     def display(self, player):
         self.show_bar(player.health, player.stats['health'], self.health_bar_rect, HEALTH_COLOR, 'Health')
         self.show_bar(player.energy, player.stats['energy'], self.energy_bar_rect, ENERGY_COLOR, 'Energy')
         self.show_bar(player.exp, nextLevel(player.level), self.exp_bar_rect, EXP_COLOR, 'Exp')
 
-        self.show_exp(player.level)
+        self.show_player_level(player.level)
 
         self.weapon_overlay(player.weapon_index, not player.can_switch_weapon)
         self.magic_overlay(player.magic_index, not player.can_switch_magic)
