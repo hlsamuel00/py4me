@@ -9,8 +9,8 @@ class UI:
 
         # Bar setup
         self.health_bar_rect = pygame.Rect(10, 10, HEALTH_BAR_WIDTH, BAR_HEIGHT)
-        self.energy_bar_rect = pygame.Rect(10, 42, ENERGY_BAR_WIDTH, BAR_HEIGHT)
-        self.exp_bar_rect = pygame.Rect(10, 74, ENERGY_BAR_WIDTH, BAR_HEIGHT)
+        self.energy_bar_rect = pygame.Rect(10, 37, ENERGY_BAR_WIDTH, BAR_HEIGHT)
+        self.exp_bar_rect = pygame.Rect(10, 64, ENERGY_BAR_WIDTH, BAR_HEIGHT)
 
         # Weapon display setup
         self.weapon_graphics = []
