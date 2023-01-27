@@ -5,9 +5,10 @@ from player import Player
 from enemy import Enemy
 from debug import debug
 from support import *
-from random import choice
+from random import choice, randint
 from weapon import Weapon
 from ui import UI
+from particles import *
 
 class Level:
     def __init__(self):
@@ -28,6 +29,9 @@ class Level:
 
         # ui setup
         self.ui = UI()
+
+        # particle setup
+        self.animation_player = AnimationPlayer()
 
     def create_map(self):
         layouts = {
@@ -84,7 +88,8 @@ class Level:
                                                 (x,y), 
                                                 [self.visible_sprites,self.attackable_sprites],
                                                 self.obstacle_sprites,
-                                                self.damage_player
+                                                self.damage_player,
+                                                self.trigger_death_particles
                                             )
 
     def create_attack(self):
@@ -106,7 +111,11 @@ class Level:
                 collision_sprites = pygame.sprite.spritecollide(attack_sprite, self.attackable_sprites, False)
                 if collision_sprites:
                     for target_sprite in collision_sprites:
-                        if target_sprite.sprite_type == 'grass': 
+                        if target_sprite.sprite_type == 'grass':
+                            position = target_sprite.rect.center
+                            offset = pygame.math.Vector2(0, 50)
+                            for leaf in range(randint(3, 6)):
+                                self.animation_player.create_grass_particles(position - offset, [self.visible_sprites]) 
                             target_sprite.kill()
                         else:
                             target_sprite.get_damage(self.player, attack_sprite.sprite_type)
@@ -116,10 +125,11 @@ class Level:
             self.player.health -= amount
             self.player.vulnerable = False
             self.player.hurt_time = pygame.time.get_ticks()
-            # spawn particles
 
+            self.animation_player.create_particles(attack_type, self.player.rect.center, [self.visible_sprites])
 
-
+    def trigger_death_particles(self, position, particle_type):
+        self.animation_player.create_particles(particle_type, position, [self.visible_sprites])
 
     def run(self):
         # update and draw game
