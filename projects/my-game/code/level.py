@@ -1,14 +1,15 @@
 import pygame
 from settings import *
+from support import *
 from tile import Tile
 from player import Player
 from enemy import Enemy
 from debug import debug
-from support import *
 from random import choice, randint
 from weapon import Weapon
 from ui import UI
-from particles import *
+from particles import AnimationPlayer
+from magic import MagicPlayer
 
 class Level:
     def __init__(self):
@@ -32,6 +33,7 @@ class Level:
 
         # particle setup
         self.animation_player = AnimationPlayer()
+        self.magic_player = MagicPlayer(self.animation_player)
 
     def create_map(self):
         layouts = {
@@ -100,10 +102,15 @@ class Level:
             self.current_attack.kill()
         self.current_attack = None
 
-    def create_magic(self, style, strength, cost): 
-        print(style)
-        print(strength)
-        print(cost)
+    def create_magic(self, style, strength, cost):
+        if style == 'heal':
+            self.magic_player.heal(self.player, strength, cost, [self.visible_sprites])
+            
+
+
+        if style == 'flame':
+            self.magic_player.flame(self.player, cost, [self.visible_sprites, self.attack_sprites])
+
 
     def player_attack_logic(self):
         if self.attack_sprites:

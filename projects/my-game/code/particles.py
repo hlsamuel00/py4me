@@ -56,6 +56,10 @@ class AnimationPlayer:
         animation_frames = self.frames[animation_type]
         ParticlesEffect(position, animation_frames, groups)
 
+    def create_spell_particles(self, animation_type, position, groups):
+        animation_frames = self.frames[animation_type]
+        MagicParticlesEffect(position, animation_frames, groups)
+
 class ParticlesEffect(pygame.sprite.Sprite):
     def __init__(self, position, animation_frames, groups):
         super().__init__(groups)
@@ -77,3 +81,9 @@ class ParticlesEffect(pygame.sprite.Sprite):
 
     def update(self):
         self.animate()
+
+class MagicParticlesEffect(ParticlesEffect):
+    def __init__(self, position, animation_frames, groups):
+        super().__init__(position, animation_frames, groups)
+
+        self.sprite_type = 'magic'

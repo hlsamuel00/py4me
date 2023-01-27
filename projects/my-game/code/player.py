@@ -148,7 +148,7 @@ class Player(Entity):
 
         # Magic switch cooldown
         if not self.can_switch_magic:
-            if current_time - self.magic_switch_time >= self.switch_duration_cooldown + magic_data[self.magic]['cooldown']:
+            if current_time - self.magic_switch_time >= self.switch_duration_cooldown:
                 self.can_switch_magic = True
 
         # Hit Cooldown
@@ -189,9 +189,15 @@ class Player(Entity):
 
     def get_full_magic_damage(self):
         base_magic = self.stats['magic']
-        magic_damage = magic_data[self.magic]['damage']
+        spell_damage = magic_data[self.magic]['strength']
 
-        return base_magic + magic_damage
+        return base_magic + spell_damage
+
+    def energy_recovery(self): 
+        if self.energy < self.stats['energy']:
+            self.energy += 1 # .002 * self.stats['magic']
+        else:
+            self.energy = self.stats['energy']
 
     def update(self):
         self.input()
@@ -199,3 +205,4 @@ class Player(Entity):
         self.get_status()
         self.animate()
         self.move(self.speed)
+        self.energy_recovery()
