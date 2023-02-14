@@ -13,3 +13,12 @@
 
 def get_sum(a: int, b: int) -> int:
     return sum(range(min(a,b), max(a,b) + 1))
+
+# OR
+
+def get_sum(a: int, b: int) -> int:
+    if a == b: return a
+
+    if a > b: (a, b) = (b, a)
+    
+    return(sum(range(a, b + 1)))
