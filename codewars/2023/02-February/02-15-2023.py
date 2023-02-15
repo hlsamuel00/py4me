@@ -55,3 +55,39 @@ def maskify(cc: str) -> str:
 
 #==============================================================================================================
 
+# DESCRIPTION:
+# Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements with the same value next to each other and preserving the original order of elements.
+
+# For example:
+#     unique_in_order('AAAABBBCCDAABBB') == ['A', 'B', 'C', 'D', 'A', 'B']
+#     unique_in_order('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']
+#     unique_in_order([1, 2, 2, 3, 3])   == [1, 2, 3]
+#     unique_in_order((1, 2, 2, 3, 3))   == [1, 2, 3]
+
+def unique_in_order(sequence: str) -> list:
+    order_list = []
+    if len(sequence) < 1: return order_list 
+
+    order_list.append(sequence[0])
+    for idx in range(1, len(sequence)):
+        if sequence[idx - 1] == sequence[idx]:
+            continue
+        else:
+            order_list.append(sequence[idx])
+    
+    return order_list
+
+# OR
+        
+def unique_in_order(sequence: str) -> list[str]:
+    order_list = []
+    if len(sequence) < 1: return order_list
+
+    for idx in range(len(sequence)):
+        if not idx or sequence[idx - 1] != sequence[idx]:
+            order_list.append(sequence[idx])
+    
+    return order_list
+
+#==============================================================================================================
+
