@@ -178,17 +178,29 @@ def is_triangle(a: int, b: int, c: int) -> bool:
 
 from re import findall
 def order(sentence: str) -> str:
-    if len(sentence) < 1: return ''
+    if not sentence: return ''
 
-    sorted_sentence = ['' for word in sentence.split(' ')]
+    word_list = sentence.split(' ')
     
-    for word in sentence.split(' '):
+    sorted_sentence = [''] * len(word_list)
+    
+    for word in word_list:
         idx = int(findall('\d', word)[0]) - 1
         sorted_sentence[idx] = word
     
-    return ' '.join(sorted_sentence).strip()
+    return ' '.join(sorted_sentence)
 
 # OR
 
 def order(sentence: str) -> str:
-    return ' '.join(sorted(sentence, key = lambda word: sorted(word)), sentence.split(' '))
+    return ' '.join(sorted(sentence.split(' '), key = lambda word: sorted(word)))
+
+# OR
+
+def find_digit(word: str) -> int:
+  for char in word:
+      if char.isdigit():
+          return int(char)
+
+def order(sentence: str) -> str:
+    return ' '.join(sorted(sentence.split(), key=find_digit))
