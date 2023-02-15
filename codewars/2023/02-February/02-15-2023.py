@@ -102,3 +102,29 @@ def solution(text: str, ending: str) -> bool:
     return text.endswith(ending)
 
 #==============================================================================================================
+
+# DESCRIPTION:
+# Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized (known as Upper Camel Case, also often referred to as Pascal case). The next words should be always capitalized.
+
+# Examples
+# "the-stealth-warrior" gets converted to "theStealthWarrior"
+# "The_Stealth_Warrior" gets converted to "TheStealthWarrior"
+
+from re import split
+def to_camel_case(text: str) -> str:
+    camelCase = ''
+
+    for idx, word in enumerate(split('[^a-zA-Z]', text)):
+        if not idx:
+            camelCase += word
+        else:
+            camelCase += word.capitalize()
+    
+    return camelCase
+
+# OR
+
+from re import split
+def to_camel_case(text: str) -> str:
+    wordList = split('[^a-zA-Z]',text)
+    return wordList[0] + ''.join(word.capitalize() for word in wordList[1:])
