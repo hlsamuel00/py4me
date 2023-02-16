@@ -72,3 +72,19 @@ def longest(str1: str, str2: str) -> str:
             sorted_str += letter
     
     return sorted_str
+
+#==============================================================================================================
+
+# Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
+
+# move_zeros([1, 0, 1, 2, 0, 1, 3]) # returns [1, 1, 2, 1, 3, 0, 0]
+
+def move_zeros(lst: list[int]) -> list[int]:
+    total_zeroes = lst.count(0)
+    
+    while 0 in lst:
+        lst.remove(0)
+            
+    return lst + [0] * total_zeroes
+
+#==============================================================================================================
