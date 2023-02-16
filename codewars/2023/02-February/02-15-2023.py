@@ -164,3 +164,31 @@ def is_triangle(a: int, b: int, c: int) -> bool:
 
 #==============================================================================================================
 
+# DESCRIPTION:
+# Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
+
+# Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
+
+# If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.
+
+# Examples
+#     "is2 Thi1s T4est 3a"  -->  "Thi1s is2 3a T4est"
+#     "4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"
+#     ""  -->  ""
+
+from re import findall
+def order(sentence: str) -> str:
+    if len(sentence) < 1: return ''
+
+    sorted_sentence = ['' for word in sentence.split(' ')]
+    
+    for word in sentence.split(' '):
+        idx = int(findall('\d', word)[0]) - 1
+        sorted_sentence[idx] = word
+    
+    return ' '.join(sorted_sentence).strip()
+
+# OR
+
+def order(sentence: str) -> str:
+    return ' '.join(sorted(sentence, key = lambda word: sorted(word)), sentence.split(' '))
