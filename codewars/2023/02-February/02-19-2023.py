@@ -9,3 +9,10 @@
 def solution(s):
     if len(s) % 2: s += '_'
     return [ s[idx - 1: idx + 1] for idx in range(1, len(s), 2) ]
+
+# OR 
+
+from re import findall
+
+def solution(string: str) -> list[str]:
+    return findall(r'.{2}', f'{string}_')
