@@ -28,3 +28,9 @@ def dig_pow(num: int, power: int) -> int:
         
     total /= num
     return total if total.is_integer() else -1
+
+# OR
+
+def dig_pow(num: int, power: int) -> int:
+    total = sum(int(str(num)[idx]) ** (idx + power) for idx in range(len(str(num)))) / num
+    return total if total.is_integer() else -1
