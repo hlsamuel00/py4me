@@ -9,5 +9,5 @@
 # sort_dict({3:1, 2:2, 1:3}) == [(1,3), (2,2), (3,1)]
 # sort_dict({1:2, 2:4, 3:6}) == [(3,6), (2,4), (1,2)]
 
-def sort_dict(d):
+def sort_dict(d: dict[int, int]) -> list[tuple[int, int]]:
     return sorted(d.items(), key = lambda tup: -tup[1])
