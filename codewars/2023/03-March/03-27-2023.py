@@ -76,3 +76,29 @@ def range_bit_count(a: int, b: int) -> int:
 
 #==============================================================================================================
 
+# Task
+# You are given a string representing a number in binary. Your task is to delete all the unset bits in this string and return the corresponding number (after keeping only the '1's).
+
+# In practice, you should implement this function:
+
+# def eliminate_unset_bits(number):
+# Examples
+# eliminate_unset_bits("11010101010101") ->  255 (= 11111111)
+# eliminate_unset_bits("111") ->  7
+# eliminate_unset_bits("1000000") -> 1
+# eliminate_unset_bits("000") -> 0
+
+def eliminate_unset_bits(number):
+    new_bin = '0'
+    for bit in number:
+        if int(bit):
+            new_bin += bit
+            
+    return int(new_bin, 2)
+
+# OR
+
+def eliminate_unset_bits(number: str) -> int:
+    return 2 ** number.count('1') - 1
+
+#==============================================================================================================
