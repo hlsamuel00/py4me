@@ -134,3 +134,41 @@ def interlockable(a: int, b: int) -> bool:
 def interlockable(a: int, b: int) -> bool:
     return not a & b
 #==============================================================================================================
+# Odd bits are getting ready for Bits Battles.
+
+# Therefore the n bits march from right to left along an 8 bits path. Once the most-significant bit reaches the left their march is done. Each step will be saved as an array of 8 integers.
+
+# Return an array of all the steps.
+
+# 1 <= n <= 8
+
+# NOTE: n != 0, because n represents the number of 1s.
+
+# Examples
+# This resembles a simple 8 LED chaser:
+
+# n = 3
+
+# 00000111
+# 00001110
+# 00011100
+# 00111000
+# 01110000
+# 11100000
+# n = 7
+
+# 01111111
+# 11111110
+
+def bit_march (n : int) -> list:
+    march = []
+    
+    for idx in range(8 - n + 1):
+        march.append([int(digit) for digit in (('1' * n ).rjust(8 - idx,'0') + '0' * idx)])
+        
+    return march
+
+# OR 
+
+def bit_march(n: int) -> list[int]:
+    return [[0] * (8 - n - idx) + [1] * n + [0] * idx for idx in range(8 - n + 1)]
