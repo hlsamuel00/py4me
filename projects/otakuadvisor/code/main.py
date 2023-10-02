@@ -12,19 +12,19 @@ http_params['sort'] = 'asc'
 # Determine the mood so we can select the genre
 http_params['genres'] = choice(MOOD_DICT[selectFromList(MOOD_DICT, "What mood are we going for?")])[1]
 
-# Determine if we should remove explicit recommendations
-if BOOL_DICT[selectFromList(BOOL_DICT, "Does it need to be Safe for Work?")]:
-    http_params['sfw'] = 'true'
-
-# Determine the type of anime to watch
+# Determine the type of anime to watch (TV, Movie, TV-Special, etc.)
 http_params['type'] = TYPE_DICT[selectFromList(TYPE_DICT, "What type of anime would you like?")]
 
-# Determine if they want it still airing or complete (only for tv shows)
+# Determine if they want a completed anime (only for tv shows)
 if http_params['type'] == 'tv':
     if BOOL_DICT[selectFromList(BOOL_DICT, "Do you want the show to be completed?")]:
         http_params['status'] = 'complete'
 
-# Determine the rating the user prefers:
+# Determine if we should remove explicit recommendations
+if BOOL_DICT[selectFromList(BOOL_DICT, "Does it need to be Safe for Work?")]:
+    http_params['sfw'] = 'true'
+
+# Determine the rating the user prefers
 if BOOL_DICT[selectFromList(BOOL_DICT, "Do you have a specific rating you'd like to view?")]:
     http_params['rating'] = RATINGS_DICT[selectFromList(RATINGS_DICT, 'What rating would you like to view?')]
 
@@ -48,23 +48,25 @@ try:
         j_son = json.loads(response)
         pagination = j_son['pagination']
 
-        # Iterate through each anime received and add the title and specific ID to a dictionary for quicker reference, and the anime title to a list to prevent iterating through the dictionary twice. 
+        # Add the anime data received from each response to a list. 
         all_recommendations += j_son['data']
 
+        # If there is another page, update the page in the HTTP parameters and make another call to get the rest of the information.
         if add_info := pagination['has_next_page']:
             http_params['page'] = pagination['current_page'] + 1
-
 except:
     pass
 
-    
-if len(all_recommendations) <= 15:
-    print(f"It looks like we've got less than 15 recommended anime options for you!! How exciting!!")
-else:
-    print(f"It looks like we've got {len(all_recommendations)} recommendations, let's take a look to see if we can narrow our search!")
+
+print(f"It looks like we've got {len(all_recommendations)} anime recommendations for you!!")
+
+if len(all_recommendations) > 15:
+    print(f"Let's take a look to see if we can narrow our recommendations!")
 
     while len(all_recommendations) > 15:
         pass
+    
+    print(f"It looks like we're down to {len(all_recommendations)}!!")
 
 
 # recommendations_dict = dict()

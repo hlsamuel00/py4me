@@ -55,7 +55,14 @@ BOOL_DICT: dict[str, str] = {
     'not necessarily': False
 }
 
+EPISODE_DICT: dict[str, int] = {
+    
+}
 
+{
+    'About how long would you like to binge?': EPISODE_DICT,
+    
+}
 
 
 
