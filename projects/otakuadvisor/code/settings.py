@@ -26,11 +26,6 @@ MOOD_DICT: dict[str,list[tuple[str,str]]] = {
                     [('Action', '1'), ('Adventure', '2'), ('Avant Garde', '5'), ('Award Winning', '46'), ('Boys Love', '28'), ('Comedy', '4'), ('Drama', '8'), ('Fantasy', '10'), ('Girls Love', '26'), ('Gourmet', '47'), ('Horror', '14'), ('Mystery', '7'), ('Romance', '22'), ('Sci-Fi', '24'), ('Slice of Life', '36'), ('Sports', '30'), ('Supernatural', '37'), ('Suspense', '41')]
             }
 
-SFW_DICT: dict[str, int] = {
-             'yes': 1, 
-             'not necessarily': 0
-            }
-
 TYPE_DICT: dict[str, str] = {
              'tv show': 'tv',
              'tv special': 'special',
@@ -46,6 +41,19 @@ STATUS_DICT: dict[str, str] = {
              'you choose': 'random'
             }
 
+RATINGS_DICT: dict[str, str] = {
+    'G - All Ages': 'g', 
+    'PG - Children': 'pg',
+    'PG-13 - Teens 13 or older': 'pg13',
+    'R - 17+ (violence & profanity)': 'r17',
+    'R+ - Mild Nudity': 'r',
+    'Rx - Hentai': 'rx'
+}
+
+BOOL_DICT: dict[str, str] = {
+    'yes': True,
+    'not necessarily': False
+}
 
 
 
