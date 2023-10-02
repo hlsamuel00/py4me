@@ -63,7 +63,8 @@ if len(all_recommendations) <= 15:
 else:
     print(f"It looks like we've got {len(all_recommendations)} recommendations, let's take a look to see if we can narrow our search!")
 
-    while len(all_recommendations)
+    while len(all_recommendations) > 15:
+        pass
 
 
 # recommendations_dict = dict()
