@@ -50,18 +50,16 @@ RATINGS_DICT: dict[str, str] = {
     'Rx - Hentai': 'rx'
 }
 
-BOOL_DICT: dict[str, str] = {
+BOOL_DICT: dict[str, bool] = {
     'yes': True,
     'not necessarily': False
 }
 
 EPISODE_DICT: dict[str, int] = {
-    
-}
-
-{
-    'About how long would you like to binge?': EPISODE_DICT,
-    
+    'quick binge': (0, 25),
+    'moderate binge': (25, 100),
+    'heavy binge': (100, 500),
+    'commitment!!': (500, float('inf'))
 }
 
 
