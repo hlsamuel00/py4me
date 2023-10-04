@@ -55,7 +55,8 @@ try:
         if add_info := pagination['has_next_page']:
             http_params['page'] = pagination['current_page'] + 1
 except:
-    pass
+    print('We were unable to process the request at this time; please try again at a later time.')
+    quit()
 
 
 print(f"It looks like we've got {len(all_recommendations)} anime recommendations for you!!")
