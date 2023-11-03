@@ -2,29 +2,51 @@
 #-------------------------
 # Option Dictionaries
 MOOD_DICT: dict[str,list[tuple[str,str]]] = {
-             'happy': 
-                   [('Comedy', '4'), ('Fantasy', '10'), ('Slice of Life', '36')], 
-             'sad/emotional': 
+              'happy': 
+                   [('Comedy', '4'), ('Fantasy', '10'), ('Slice of Life', '36'), ('Ecchi', '9')], 
+              'sad/emotional': 
                     [('Drama', '8'), ('Boys Love', '28'), ('Girls Love', '26')], 
-             'adventurous': 
+              'adventurous': 
                     [('Action', '1'), ('Adventure', '2'), ('Sports', '30'), ('Sci-Fi', '24')],
-             'chill': 
+              'chill': 
                     [('Slice of Life', '36'), ('Gourmet', '47')],
-             'curious/intellectual': 
+              'curious/intellectual': 
                     [('Mystery', '7'), ('Supernatural', '37'), ('Suspense', '41'), ('Sci-Fi', '24')],
-             'romantic': 
+              'romantic': 
                     [('Romance', '22'), ('Boys Love', '28'), ('Girls Love', '26')],
-             'scared/suspenseful': 
+              'scared/suspenseful': 
                     [('Horror', '14'), ('Suspense', '41')],
-             'action-packed': 
+              'action-packed': 
                     [('Action', '1'), ('Sports', '30')],
-             'inspirational': 
+              'inspirational': 
                     [('Award Winning', '46'), ('Sports', '30'), ('Sci-Fi', '24')],
-             'a little weird':
+              'a little weird':
                     [('Avant Garde', '5'), ('Fantasy', '10'), ('Supernatural', '37')],
+              'risque':
+                    [('Erotica', '49'), ('Hentai', '12')],
              'you choose':
                     [('Action', '1'), ('Adventure', '2'), ('Avant Garde', '5'), ('Award Winning', '46'), ('Boys Love', '28'), ('Comedy', '4'), ('Drama', '8'), ('Fantasy', '10'), ('Girls Love', '26'), ('Gourmet', '47'), ('Horror', '14'), ('Mystery', '7'), ('Romance', '22'), ('Sci-Fi', '24'), ('Slice of Life', '36'), ('Sports', '30'), ('Supernatural', '37'), ('Suspense', '41')]
             }
+
+'''
+THEME_DICT: dict[str, int] = {
+             'Adult Cast': '50', 'Anthropomorphic': '51', 'CGDCT': '52', 'Childcare': '53', 
+             'Combat Sports': '54', 'Crossdressing': '81', 'Delinquents': '55', 'Detective': '39', 'Educational': '56', 'Gag Humor': '57', 'Gore': '58', 'Harem': '35', 'High Stakes Game': '59', 'Historical': '13', 'Idols (Female)': '60', 'Idols(Male)': '61', 'Isekai': '62', 
+             'Iyashikei': '63', 'Love Polygon': '64', 'Magical Sex Shift': '65', 'Mahou Shoujo': '66', 'Martial Arts': '17', 'Mecha': '18', 'Medical': '67', 'Military': '38', 'Music': '19', 'Mythology': '6', 'Organized Crime': '68', 'Otaku Culture': '69', 'Parody': '20', 
+             'Performing Arts': '70', 'Pets': '71', 'Psychological': '40', 'Racing': '3', 
+             'Reincarnation': '72', 'Reverse Harem': '73', 'Romantic Subtext': '74', 'Samurai': '21', 'School': '23', 'Showbiz': '75', 'Space': '29', 'Strategy Game': '11', 'Super Power': '31', 'Survival': '76', 'Team Sports': '77', 'Time Travel': '78', 'Vampire': '32', 'Video Game': '79', 'Visual Arts': '80', 
+              'Workplace': '48'
+}
+
+NSFW_THEME_DICT: dict[str, int] = {
+             'Adult Cast': '50', 'Anthropomorphic': '51', 'CGDCT': '52', 'Childcare': '53', 
+             'Combat Sports': '54', 'Crossdressing': '81', 'Delinquents': '55', 'Detective': '39', 'Educational': '56', 'Gag Humor': '57', 'Gore': '58', 'Harem': '35', 'High Stakes Game': '59', 'Historical': '13', 'Idols (Female)': '60', 'Idols(Male)': '61', 'Isekai': '62', 
+             'Iyashikei': '63', 'Love Polygon': '64', 'Magical Sex Shift': '65', 'Mahou Shoujo': '66', 'Martial Arts': '17', 'Mecha': '18', 'Medical': '67', 'Military': '38', 'Music': '19', 'Mythology': '6', 'Organized Crime': '68', 'Otaku Culture': '69', 'Parody': '20', 
+             'Performing Arts': '70', 'Pets': '71', 'Psychological': '40', 'Racing': '3', 
+             'Reincarnation': '72', 'Reverse Harem': '73', 'Romantic Subtext': '74', 'Samurai': '21', 'School': '23', 'Showbiz': '75', 'Space': '29', 'Strategy Game': '11', 'Super Power': '31', 'Survival': '76', 'Team Sports': '77', 'Time Travel': '78', 'Vampire': '32', 'Video Game': '79', 'Visual Arts': '80', 
+              'Workplace': '48'
+}
+'''
 
 TYPE_DICT: dict[str, str] = {
              'tv show': 'tv',
@@ -62,11 +84,6 @@ EPISODE_DICT: dict[str, int] = {
     'commitment!!': (500, float('inf'))
 }
 
-
-
-
-
-
 #==============================================================================================================
 # Genres
 # Action, Adventure, Avant Garde, Award Winning, Boys Love, Comedy, Drama, Fantasy, Girls Love, Gourmet, Horror, Mystery, Romance, Sci-Fi , Slice of Life, Sports, Supernatural, Suspense
@@ -85,17 +102,24 @@ EPISODE_DICT: dict[str, int] = {
 
 # Theme Dictionary
 # theme_dict = {
-#               'Ecchi': '9', 'Erotica': '49', 'Hentai': '12', 'Adult Cast': '50', 'Anthropomorphic': '51', 
-#               'CGDCT': '52', 'Childcare': '53', 'Combat Sports': '54', 'Crossdressing': '81', 
-#               'Delinquents': '55', 'Detective': '39', 'Educational': '56', 'Gag Humor': '57', 'Gore': '58', 
-#               'Harem': '35', 'High Stakes Game': '59', 'Historical': '13', 'Idols (Female)': '60', 
-#               'Idols(Male)': '61', 'Isekai': '62', 'Iyashikei': '63', 'Love Polygon': '64', 
-#               'Magical Sex Shift': '65', 'Mahou Shoujo': '66', 'Martial Arts': '17', 'Mecha': '18', 
-#               'Medical': '67', 'Military': '38', 'Music': '19', 'Mythology': '6', 'Organized Crime': '68', 
-#               'Otaku Culture': '69', 'Parody': '20', 'Performing Arts': '70', 'Pets': '71', 
-#               'Psychological': '40', 'Racing': '3', 'Reincarnation': '72', 'Reverse Harem': '73', 
-#               'Romantic Subtext': '74', 'Samurai': '21', 'School': '23', 'Showbiz': '75', 'Space': '29', 
-#               'Strategy Game': '11', 'Super Power': '31', 'Survival': '76', 'Team Sports': '77', 
-#               'Time Travel': '78', 'Vampire': '32', 'Video Game': '79', 'Visual Arts': '80', 
-#               'Workplace': '48', 'Josei': '43', 'Kids': '15', 'Seinen': '42', 'Shoujo': '25', 'Shounen': '27'
+#               ',} 
+
+
+# Demographic_dict = {
+#               'Josei': '43', 'Kids': '15', 'Seinen': '42', 'Shoujo': '25', 'Shounen': '27'
 #               }
+
+
+
+'''
+original_url_schema = {
+      original url id: 'database ID number'
+      original url: 'string of original url'
+      users: [list of users with access to view]
+      short url: 'short url string'
+
+}
+
+
+
+'''
