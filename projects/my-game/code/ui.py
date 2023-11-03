@@ -50,7 +50,7 @@ class UI:
     def show_player_level(self, exp):
         text_surface = self.font.render(str(int(exp)), False, TEXT_COLOR)
         x = self.display_surface.get_size()[0] - 20
-        y = self.display_surface.get_size()[1] - 20
+        y = self.display_surface.get_size()[1] - 25
         text_rect = text_surface.get_rect(bottomright = (x,y))
 
         pygame.draw.rect(self.display_surface, UI_BG_COLOR, text_rect.inflate(10, 10), border_radius = 4)

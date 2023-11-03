@@ -91,7 +91,8 @@ class Level:
                                                 [self.visible_sprites,self.attackable_sprites],
                                                 self.obstacle_sprites,
                                                 self.damage_player,
-                                                self.trigger_death_particles
+                                                self.trigger_death_particles,
+                                                self.add_xp
                                             )
 
     def create_attack(self):
@@ -111,7 +112,6 @@ class Level:
         if style == 'flame':
             self.magic_player.flame(self.player, cost, [self.visible_sprites, self.attack_sprites])
 
-
     def player_attack_logic(self):
         if self.attack_sprites:
             for attack_sprite in self.attack_sprites:
@@ -129,7 +129,7 @@ class Level:
 
     def damage_player(self, amount, attack_type):
         if self.player.vulnerable:
-            self.player.health -= amount
+            self.player.health = max(self.player.health - amount, 0)
             self.player.vulnerable = False
             self.player.hurt_time = pygame.time.get_ticks()
 
@@ -137,6 +137,9 @@ class Level:
 
     def trigger_death_particles(self, position, particle_type):
         self.animation_player.create_particles(particle_type, position, [self.visible_sprites])
+
+    def add_xp(self, amount):
+        self.player.exp += amount
 
     def run(self):
         # update and draw game
