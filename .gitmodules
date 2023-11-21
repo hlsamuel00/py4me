@@ -1,3 +1,18 @@
 [submodule "tlacyn/daily-work/DSandAs"]
 	path = tlacyn/daily-work/DSandAs
 	url = https://github.com/hlsamuel00/DSandAs.git
+[submodule "projects/probability-calculator"]
+	path = projects/probability-calculator
+	url = https://github.com/hlsamuel00/probability-calculator.git
+[submodule "projects/polygon-area-calculator"]
+	path = projects/polygon-area-calculator
+	url = https://github.com/hlsamuel00/polygon-area-calculator.git
+[submodule "projects/budget-app"]
+	path = projects/budget-app
+	url = https://github.com/hlsamuel00/budget-app.git
+[submodule "projects/arithmetic_formatter"]
+	path = projects/arithmetic_formatter
+	url = https://github.com/hlsamuel00/arithmetic_formatter.git
+[submodule "projects/time-calculator"]
+	path = projects/time-calculator
+	url = https://github.com/hlsamuel00/time-calculator.git
